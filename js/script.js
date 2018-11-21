@@ -8,7 +8,7 @@ var app = {
 	},
 
 	dispositivoListo: function(){
-		navigator.geolocation.getCurrentPosition(app.dibujaCoordenadas, app.errorAlSolicitarLocalizacion);
+		navigator.geolocation.getCurrentPosition(app.pintaCoordenadasEnMapa, app.errorAlSolicitarLocalizacion);
 	},
 
 	pintaCoordenadasEnMapa: function(position){
