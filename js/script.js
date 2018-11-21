@@ -19,7 +19,21 @@ var app = {
 		maxZoom: 18
 		}).addTo(miMapa);
 
-		/*coordsDiv.innerHTML = 'Latitud: ' + position.coords.latitude + 'Longitud: ' + position.coords.longitude;*/
+		/*Funcion que permite pintar el marcador*/
+		app.pintaMarcador([position.coords.latitude, position.coords.longitude], '¡Estoy Aqui!', miMapa);
+		
+		/*Funcion para seleccionar un favorito*/
+		miMapa.on('click', function(){
+			var texto = 'Marcador en l(' + evento.latlng.lat.toFixed(2) + ') y L(' + evento.latlng.lng.toFixed(2) + ')';
+			app.pintaMarcador(evento.latlng, texto, miMapa);
+		});
+		
+	},
+
+	/*Funcion que pinta el marcador en el mapa*/
+	pintaMarcador: function(latlng, texto, mapa){
+		var marcador = L.marker(latlng).addTo(mapa);
+		marcador.bindPopup(texto).openPopup();
 	},
 
 	errorAlSolicitarLocalizacion: function(error){
